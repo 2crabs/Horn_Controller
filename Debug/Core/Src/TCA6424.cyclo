@@ -1,0 +1,4 @@
+../Core/Src/TCA6424.c:3:19:TCA6424_Init	1
+../Core/Src/TCA6424.c:19:19:TCA6424_WriteRegister	1
+../Core/Src/TCA6424.c:23:19:TCA6424_WriteRegisters	1
+../Core/Src/TCA6424.c:27:19:TCA6424_setAsOutputs	1

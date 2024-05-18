@@ -18,6 +18,8 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "TCA6424.h"
+#include "Display.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -48,8 +50,10 @@ I2C_HandleTypeDef hi2c1;
 
 RTC_HandleTypeDef hrtc;
 
-/* USER CODE BEGIN PV */
 
+
+/* USER CODE BEGIN PV */
+TCA6424 ioExpander;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -101,14 +105,11 @@ int main(void)
   MX_I2C1_Init();
   MX_RTC_Init();
   /* USER CODE BEGIN 2 */
-  uint8_t buf [2];
-  buf[0] = 0x0c;
-  buf[1] = 0x00;
-  HAL_StatusTypeDef result = HAL_I2C_Master_Transmit(&hi2c1, 0x22 << 1, buf, 2, 1000);
-  buf[0] = 0x0d;
-  result = HAL_I2C_Master_Transmit(&hi2c1, 0x22 << 1, buf, 2, 1000);
-  buf[0] = 0x0e;
-  result = HAL_I2C_Master_Transmit(&hi2c1, 0x22 << 1, buf, 2, 1000);
+  TCA6424_Init(&ioExpander, &hi2c1, GPIOB, IO_RST_Pin);
+  TCA6424_setAsOutputs(&ioExpander);
+  uint16_t i = 0;
+  uint8_t digit1[10] = DIGIT1_VALUES;
+  uint8_t digit23[10] = DIGIT23_VALUES;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -116,30 +117,26 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-
     /* USER CODE BEGIN 3 */
 
 
-	 buf[0] = 0x04;
-	 buf[1] = 0xff;
-	 result = HAL_I2C_Master_Transmit(&hi2c1, 0x22 << 1, buf, 2, 1000);
-	 buf[0] = 0x05;
-	 result = HAL_I2C_Master_Transmit(&hi2c1, 0x22 << 1, buf, 2, 1000);
-	 buf[0] = 0x06;
-	 result = HAL_I2C_Master_Transmit(&hi2c1, 0x22 << 1, buf, 2, 1000);
+	  uint8_t hundreds = i / 100;
+	  uint8_t tens = (i / 10) % 10;
+	  uint8_t units = i % 10;
 
-	 HAL_Delay(2000);
-	 buf[0] = 0x04;
-	 buf[1] = 0x00;
-	 result = HAL_I2C_Master_Transmit(&hi2c1, 0x22 << 1, buf, 2, 1000);
-	 buf[0] = 0x05;
-	 result = HAL_I2C_Master_Transmit(&hi2c1, 0x22 << 1, buf, 2, 1000);
-	 buf[0] = 0x06;
-	 result = HAL_I2C_Master_Transmit(&hi2c1, 0x22 << 1, buf, 2, 1000);
+	  HAL_TickFreqTypeDef freq = HAL_GetTickFreq();
 
-	 HAL_GPIO_TogglePin(GPIOA, RELAY2_Pin);
-
-	 HAL_Delay(2000);
+	 uint8_t ioPort0 = digit1[hundreds] | (digit23[tens] << 7);
+	 uint8_t ioPort1 = (digit23[tens] >> 1) | (digit23[units] << 6);
+	 uint8_t ioPort2 = (digit23[units] >> 2);
+	 TCA6424_WriteRegister(&ioExpander, TCA6424_REG_OUT0, &ioPort0);
+	 TCA6424_WriteRegister(&ioExpander, TCA6424_REG_OUT1, &ioPort1);
+	 TCA6424_WriteRegister(&ioExpander, TCA6424_REG_OUT2, &ioPort2);
+	 HAL_Delay(50);
+	 i = HAL_GetTick()/1000;
+	 if (i >= 999){
+		 i = 0;
+	 }
   }
   /* USER CODE END 3 */
 }
