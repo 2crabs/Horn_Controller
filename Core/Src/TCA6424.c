@@ -24,7 +24,7 @@ HAL_StatusTypeDef TCA6424_WriteRegisters(TCA6424 *dev, uint8_t reg, uint8_t *dat
 	return HAL_I2C_Mem_Write(dev->i2cHandle, TCA6424_I2C_ADDR, reg, I2C_MEMADD_SIZE_8BIT, data, size, 100);
 }
 
-HAL_StatusTypeDef TCA6424_setAsOutputs(TCA6424 *dev){
+HAL_StatusTypeDef TCA6424_SetAsOutputs(TCA6424 *dev){
 	uint8_t config[3] = {0x00, 0x00, 0x00};
 	return TCA6424_WriteRegisters(dev, TCA6424_REG_CONFIG0 | TCA6424_AUTO_INCREMENT, config, 3);
 }

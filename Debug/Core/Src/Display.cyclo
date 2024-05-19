@@ -1,0 +1,3 @@
+../Core/Src/Display.c:3:19:Display_SetDigits	3
+../Core/Src/Display.c:24:19:Display_SetValue	1
+../Core/Src/Display.c:28:19:Display_SetMinSec	1

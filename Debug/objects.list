@@ -1,3 +1,4 @@
+"./Core/Src/Display.o"
 "./Core/Src/TCA6424.o"
 "./Core/Src/main.o"
 "./Core/Src/stm32f0xx_hal_msp.o"

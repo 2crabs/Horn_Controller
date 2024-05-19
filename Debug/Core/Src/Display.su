@@ -1,0 +1,3 @@
+../Core/Src/Display.c:3:19:Display_SetDigits	56	static
+../Core/Src/Display.c:24:19:Display_SetValue	16	static
+../Core/Src/Display.c:28:19:Display_SetMinSec	16	static

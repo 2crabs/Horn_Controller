@@ -106,7 +106,7 @@ int main(void)
   MX_RTC_Init();
   /* USER CODE BEGIN 2 */
   TCA6424_Init(&ioExpander, &hi2c1, GPIOB, IO_RST_Pin);
-  TCA6424_setAsOutputs(&ioExpander);
+  TCA6424_SetAsOutputs(&ioExpander);
   uint16_t i = 0;
   uint8_t digit1[10] = DIGIT1_VALUES;
   uint8_t digit23[10] = DIGIT23_VALUES;

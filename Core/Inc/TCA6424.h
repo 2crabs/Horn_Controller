@@ -33,6 +33,6 @@ HAL_StatusTypeDef TCA6424_Init(TCA6424 *dev, I2C_HandleTypeDef *i2c, GPIO_TypeDe
 HAL_StatusTypeDef TCA6424_WriteRegister(TCA6424 *dev, uint8_t reg, uint8_t *data);
 HAL_StatusTypeDef TCA6424_WriteRegisters(TCA6424 *dev, uint8_t reg, uint8_t *data, uint8_t size);
 
-HAL_StatusTypeDef TCA6424_setAsOutputs(TCA6424 *dev);
+HAL_StatusTypeDef TCA6424_SetAsOutputs(TCA6424 *dev);
 
 #endif
