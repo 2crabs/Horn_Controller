@@ -28,7 +28,9 @@ Core/Src/TCA6424.o: ../Core/Src/TCA6424.c ../Core/Inc/TCA6424.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr_ex.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rtc.h \
- ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rtc_ex.h
+ ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rtc_ex.h \
+ ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h \
+ ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h
 ../Core/Inc/TCA6424.h:
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:
 ../Core/Inc/stm32f0xx_hal_conf.h:
@@ -60,3 +62,5 @@ Core/Src/TCA6424.o: ../Core/Src/TCA6424.c ../Core/Inc/TCA6424.h \
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr_ex.h:
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rtc.h:
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rtc_ex.h:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h:

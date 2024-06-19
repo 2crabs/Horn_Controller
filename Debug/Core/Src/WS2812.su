@@ -1,0 +1,5 @@
+../Core/Src/WS2812.c:3:6:WS2812_Init	24	static
+../Core/Src/WS2812.c:8:6:WS2812_Reset_Buf	24	static
+../Core/Src/WS2812.c:14:6:WS2812_Write_Buf	40	static
+../Core/Src/WS2812.c:49:19:WS2812_Send	16	static
+../Core/Src/WS2812.c:53:19:WS2812_StopDMA	16	static
